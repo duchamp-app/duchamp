@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "duchamp": {
+      "type": "http",
+      "url": "https://duchamp.app/api/mcp"
+    }
+  }
+}

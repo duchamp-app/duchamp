@@ -1,0 +1,43 @@
+{
+  "name": "duchamp",
+  "version": "0.1.1",
+  "description": "Make landing pages, images, carousels and launch videos from Duchamp templates — your agent builds, a fresh visual judge checks, and it retries until it passes.",
+  "author": {
+    "name": "Duchamp",
+    "url": "https://duchamp.app"
+  },
+  "homepage": "https://duchamp.app",
+  "license": "MIT",
+  "keywords": [
+    "design",
+    "landing-page",
+    "marketing",
+    "carousel",
+    "video",
+    "templates"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Duchamp",
+    "shortDescription": "Design and launch assets that pass a visual judge",
+    "longDescription": "Duchamp gives Codex reviewed templates for landing pages, images, carousels and launch videos. The make skill builds each asset from a template recipe, renders it, has a fresh reviewer judge the actual pixels against fixed criteria, and retries until it passes. Runs on your own Codex subscription; Duchamp never calls a model or stores your material.",
+    "developerName": "Duchamp",
+    "category": "Design",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://duchamp.app",
+    "brandColor": "#111111",
+    "defaultPrompt": [
+      "Make a launch kit for this product",
+      "Build a landing page hero for this repo",
+      "Make a 5-slide launch carousel"
+    ],
+    "composerIcon": "./assets/logo.png",
+    "logo": "./assets/logo.png",
+    "screenshots": []
+  },
+  "repository": "https://github.com/duchamp-app/duchamp"
+}

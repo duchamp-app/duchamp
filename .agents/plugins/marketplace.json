@@ -1,0 +1,12 @@
+{
+  "name": "duchamp",
+  "interface": { "displayName": "Duchamp" },
+  "plugins": [
+    {
+      "name": "duchamp",
+      "source": { "source": "local", "path": "./plugins/duchamp" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Design"
+    }
+  ]
+}

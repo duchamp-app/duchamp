@@ -1,0 +1,15 @@
+{
+  "name": "duchamp",
+  "description": "Duchamp: reviewed templates plus a build → judge → retry loop for design and launch assets.",
+  "owner": {
+    "name": "Duchamp",
+    "url": "https://duchamp.app"
+  },
+  "plugins": [
+    {
+      "name": "duchamp",
+      "source": "./plugins/duchamp",
+      "description": "Make landing pages, images, carousels and launch videos from Duchamp templates — your agent builds, a fresh visual judge checks, and it retries until it passes."
+    }
+  ]
+}
