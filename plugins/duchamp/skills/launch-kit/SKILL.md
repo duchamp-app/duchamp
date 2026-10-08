@@ -1,6 +1,6 @@
 ---
 name: launch-kit
-description: For someone building their own product (SaaS, app, tool) with an AI agent — read the repo, confirm the facts, then produce the launch set around the product (landing page or hero, social cover images, launch carousel, short launch video, launch post text) through the Duchamp make loop. Use when the user says "런칭 준비", "출시 키트", "홍보물 만들어줘", "마케팅 소스", "launch kit", "make marketing assets for this product".
+description: For someone building their own product (SaaS, app, tool) with an AI agent — read the repo, confirm the facts, then produce the launch set around the product (landing page or hero, launch image, launch carousel, short launch video, logo kit, pitch deck) through the Duchamp make loop. Use when the user says "런칭 준비", "출시 키트", "홍보물 만들어줘", "마케팅 소스", "launch kit", "make marketing assets for this product".
 ---
 
 # Duchamp launch kit
@@ -26,18 +26,21 @@ Default set. Drop what does not fit their launch channels:
 | # | Asset | Duchamp source |
 |---|---|---|
 | 1 | Landing page, or only the hero if a site exists | `search_ui` by service/intent/style |
-| 2 | Social cover image (X/Threads attachment, newsletter header) | `search_image_templates` (`ratio: threads` or `header`) |
+| 2 | Launch image (poster or info card, 4:5 or 1:1) | `search_image_templates` (`use: poster` or `card`) |
 | 3 | 5-slide launch carousel (what it is → the problem → 3 things it does → how to start) | carousel style via `search_image_templates` |
-| 4 | 9:16 launch video (silent motion graphics) | `video.open-countdown-video` (launch date known) or `reels.product-reveal` |
-| 5 | Launch post text for each channel | `search_templates` (threads / newsletter) |
+| 4 | 9:16 launch video (silent motion graphics) | `search_image_templates` with `use: video` (e.g. an opening countdown when the launch date is known) |
+| 5 | Logo kit, only if the product has no logo yet | `search_image_templates` with `use: logo` |
+| 6 | Pitch deck, only if the user is raising or presenting | `search_image_templates` with `use: deck` |
 
-Say plainly what Duchamp **does not cover yet**: logo design, app-internal UI (dashboards, admin, ERP screens), Product Hunt gallery sizes, OG image at exactly 1200×630. If the user wants one of these, offer the closest template and say it is a stretch. Do not pretend it is a fit.
+Fonts for these assets: if the brand has no font yet, pick one with `search_assets` (`type: font`) and use `get_asset` for the install code and license. Use it in every asset.
+
+Say plainly what Duchamp **does not cover**: launch post text (write it yourself from the confirmed facts and say so), app-internal UI (dashboards, admin, ERP screens), Product Hunt gallery sizes, OG image at exactly 1200×630. If the user wants one of these, offer the closest template and say it is a stretch. Do not pretend it is a fit.
 
 Show the kit as the `make` checklist, then start. No extra confirmation is needed once the facts are confirmed.
 
 ## 3. Build each asset with `make`
 
-Run the `make` skill for each asset in order 1 → 5. Assets should share one look: reuse the same brand colors and fonts, and if the landing page passed first, take its type scale and palette into the image and video briefs.
+Run the `make` skill for each asset in order (1 → 6, skipping what the user dropped). Assets should share one look: reuse the same brand colors and fonts, and if the landing page passed first, take its type scale and palette into the image and video briefs.
 
 Product screenshots: if an asset needs the real product UI, run the user's app locally and capture real screens. Never mock up a fake UI and present it as the product.
 

@@ -1,18 +1,18 @@
 ---
 name: make
-description: Build one or more design/marketing assets (landing page or hero, image, carousel, launch video, social post) from Duchamp templates with a build → render → visual-judge → retry loop, so what you hand back has actually been looked at and passed. Use when the user asks to make, design or generate a landing page, hero, OG/cover image, card news, carousel, promo/launch video or launch post — "만들어줘", "디자인해줘", "랜딩", "캐러셀", "홍보 영상", "make a hero", "design an image for".
+description: Build one or more design/marketing assets (landing page or hero, image, carousel, launch video, logo kit, pitch deck) from Duchamp templates with a build → render → visual-judge → retry loop, so what you hand back has actually been looked at and passed. Use when the user asks to make, design or generate a landing page, hero, poster/cover image, card news, carousel, promo/launch video, logo or pitch deck — "만들어줘", "디자인해줘", "랜딩", "캐러셀", "홍보 영상", "로고", "피치덱", "make a hero", "design an image for".
 ---
 
 # Duchamp make — build, judge, retry
 
 You are the **worker**. A separate **judge** with a fresh context looks at the rendered pixels and decides pass/fail. You never grade your own work. You keep going until it passes or you run out of tries. Then you report honestly.
 
-Duchamp's server only gives templates, references and recipes (MCP server `duchamp`). It never calls a model and never stores the user's material. All generation runs here, on the user's own subscription.
+Duchamp's server only gives templates, references, recipes and assets (MCP server `duchamp`) — exactly what duchamp.app lists: Image, Motion, UI, Brand › Logo, Deck › Pitch deck and Assets (fonts, motion backgrounds). It never calls a model and never stores the user's material. All generation runs here, on the user's own subscription.
 
 ## 0. Brief (ask once, then go)
 
 Collect, in one short message if anything essential is missing:
-- **What** each asset is and where it goes (site hero, Instagram carousel, X/Threads post, 9:16 video, OG image…).
+- **What** each asset is and where it goes (site hero, Instagram carousel, poster image, 9:16 video, logo kit, pitch deck…).
 - **Brand**: name, colors (HEX), and the font if they have one.
 - **Confirmed facts only**: what the product does, real numbers, dates, prices, places. If the repo is open, read README/package.json/existing site first and propose facts for the user to confirm. **Never invent** reviews, ratings, user counts, prices, metrics or dates. Unknowns become `[bracket placeholders]` and go in the report under "확인할 것 / To confirm".
 
@@ -25,10 +25,15 @@ Split the request into assets (one asset = one rendered output). For each asset,
 | Asset | Find | Fetch |
 |---|---|---|
 | Landing page / hero section | `search_ui` (`level: page` or `hero`) | `get_ui(id)` (full recipe) |
-| Single image (cover, header, diagram, product scene) | `search_image_templates` | `get_reference(id)` then `get_template(id, format: "recipe")` if `recipe_available`, else the image prompt |
-| 5-slide carousel | `search_image_templates` (ask for a "캐러셀 스타일") | `get_reference(id)` then `get_template(id)` (recipe is the default where present) |
-| 9:16 motion video | ids `video.change-notice-video`, `video.open-countdown-video`, `video.event-info-video`, `reels.product-reveal`, `reels.making-process`, `reels.stopmotion-feel` | `get_template(id, format: "recipe")` |
-| Post text (Threads/X/newsletter/caption) | `search_templates` | `get_template(id)` |
+| Single image (poster, info card, carousel cover/body) | `search_image_templates` | `get_reference(id)` then `get_template(id, format: "recipe")` if `recipe_available`, else the image prompt |
+| 5-slide carousel | `search_image_templates` (ask for a "캐러셀 스타일") | `get_reference(id)` then `get_template(id)` (the first of `formats` is the default) |
+| 9:16 motion video | `search_image_templates` with `use: video` (`video.<slug>`) | `get_reference(id)` then `get_template(id)` (recipe only) |
+| Logo kit | `search_image_templates` with `use: logo` | `get_template(id)` (recipe only) |
+| Pitch deck | `search_image_templates` with `use: deck` (`deck.<slug>`) | `get_reference(id)` then `get_template(id)` (recipe only) |
+| Font for the asset or site | `search_assets` (`type: font`) | `get_asset(id)` (install code + license) |
+| Background loop under text | `search_assets` (`type: motion_background`) | `get_asset(id)` (MP4 URLs + license note) |
+
+Duchamp does not provide post text (Threads/X/newsletter/caption) templates. If the user wants a post, write it yourself from the confirmed facts only and say it did not come from a Duchamp template.
 
 If nothing fits well, say so in the plan. Do not stretch a template.
 
