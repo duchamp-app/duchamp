@@ -9,6 +9,8 @@ You are the **worker**. A separate **judge** with a fresh context looks at the r
 
 Duchamp's server only gives templates, references, recipes and assets (MCP server `duchamp`) — exactly what duchamp.app lists: Image, Motion, UI, Brand › Logo, Deck › Pitch deck and Assets (fonts, motion backgrounds). It never calls a model and never stores the user's material. All generation runs here, on the user's own subscription.
 
+The first connection asks for a free Duchamp login (OAuth in the browser, no API key). If the `duchamp` tools are missing or return an authorization error, tell the user to sign in: Claude Code `/mcp` → `duchamp` → Authenticate, Codex `codex mcp login duchamp`. `get_template`, `get_ui` and `get_asset` each count toward the user's daily free limit (shared with copying on duchamp.app); searches and `get_reference` do not, so pick with search and previews first and fetch only what you will build. If a fetch returns the daily-limit message, pass it on and stop fetching.
+
 ## 0. Brief (ask once, then go)
 
 Collect, in one short message if anything essential is missing:

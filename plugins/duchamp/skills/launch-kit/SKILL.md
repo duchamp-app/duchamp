@@ -36,6 +36,8 @@ Fonts for these assets: if the brand has no font yet, pick one with `search_asse
 
 Say plainly what Duchamp **does not cover**: launch post text (write it yourself from the confirmed facts and say so), app-internal UI (dashboards, admin, ERP screens), Product Hunt gallery sizes, OG image at exactly 1200×630. If the user wants one of these, offer the closest template and say it is a stretch. Do not pretend it is a fit.
 
+Duchamp MCP needs a free Duchamp login on the first connection (OAuth in the browser, no API key; Claude Code `/mcp` → Authenticate, Codex `codex mcp login duchamp`). A full kit fetches about one template per asset, and each `get_template` / `get_ui` / `get_asset` counts toward the user's daily free limit (shared with copying on duchamp.app; searches and `get_reference` are free). If the limit message comes back mid-kit, finish the assets you already have recipes for and list the rest under "확인할 것 / To confirm".
+
 Show the kit as the `make` checklist, then start. No extra confirmation is needed once the facts are confirmed.
 
 ## 3. Build each asset with `make`
