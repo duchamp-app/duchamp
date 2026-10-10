@@ -1,0 +1,25 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.duchamp-app/duchamp",
+  "title": "Duchamp",
+  "description": "Curated design references for coding agents: UI pages, image prompts, motion video recipes, fonts.",
+  "version": "0.3.1",
+  "websiteUrl": "https://duchamp.app",
+  "repository": {
+    "url": "https://github.com/duchamp-app/duchamp",
+    "source": "github"
+  },
+  "icons": [
+    {
+      "src": "https://duchamp.app/brand/bust-dark-512.png",
+      "mimeType": "image/png",
+      "sizes": ["512x512"]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://duchamp.app/api/mcp"
+    }
+  ]
+}
