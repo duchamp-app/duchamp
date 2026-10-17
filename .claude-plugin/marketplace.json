@@ -1,6 +1,6 @@
 {
   "name": "duchamp",
-  "description": "Duchamp: reviewed templates plus a build → judge → retry loop for design and launch assets.",
+  "description": "Duchamp: market-tested ad references and code-rendered recipes for coding agents.",
   "owner": {
     "name": "Duchamp",
     "url": "https://duchamp.app"
@@ -9,7 +9,7 @@
     {
       "name": "duchamp",
       "source": "./plugins/duchamp",
-      "description": "Make landing pages, images, carousels and launch videos from Duchamp templates — your agent builds, a fresh visual judge checks, and it retries until it passes."
+      "description": "Find long-running ads, break down advertisers, and turn a reference into your own image, carousel or video with a Duchamp recipe your agent renders in code — a fresh visual judge checks and it retries until it passes."
     }
   ]
 }

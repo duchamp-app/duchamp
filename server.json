@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.duchamp-app/duchamp",
   "title": "Duchamp",
-  "description": "Curated design references for coding agents: UI pages, image prompts, motion video recipes, fonts.",
-  "version": "0.4.0",
+  "description": "Market-tested ad references + code-rendered recipes for coding agents.",
+  "version": "0.5.0",
   "websiteUrl": "https://duchamp.app",
   "repository": {
     "url": "https://github.com/duchamp-app/duchamp",

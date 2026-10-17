@@ -1,7 +1,7 @@
 {
   "name": "duchamp",
-  "version": "0.4.0",
-  "description": "Make landing pages, images, carousels and launch videos from Duchamp templates — your agent builds, a fresh visual judge checks, and it retries until it passes.",
+  "version": "0.5.0",
+  "description": "Market-tested ad references + code-rendered recipes for coding agents.",
   "author": {
     "name": "Duchamp",
     "url": "https://duchamp.app"
