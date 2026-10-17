@@ -1,6 +1,6 @@
 {
   "name": "duchamp",
-  "description": "Duchamp: market-tested ad research and visual templates for coding agents.",
+  "description": "Duchamp: market-tested ad research for coding agents.",
   "owner": {
     "name": "Duchamp",
     "url": "https://duchamp.app"
@@ -9,7 +9,7 @@
     {
       "name": "duchamp",
       "source": "./plugins/duchamp",
-      "description": "Find long-running ads, break down advertisers and compare pages; search landing pages, image prompts, motion-video recipes, fonts and backgrounds your agent builds from."
+      "description": "Find the ads that are working, read their keyframes and transcripts, break down advertisers and compare pages."
     }
   ]
 }

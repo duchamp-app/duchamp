@@ -5,11 +5,11 @@ description: Research market-tested ads on Duchamp — find long-running ads, br
 
 # Duchamp ads research
 
-Duchamp's server returns observed ads, advertiser breakdowns, comparisons, and a saved library. Signed-in results include creative URLs on Duchamp's mirror. Inline images are low-resolution previews for you; when showing the user, link `duchamp_url`. It does not reproduce ads. It never calls a model. Saved items, boards, and watched advertiser pages are stored for the signed-in user. The saved-library tools need a separate per-app opt-in on https://duchamp.app/saved/connect (read, or read/write); signing in to the MCP server alone does not grant them. If a call returns `ACCESS_REQUIRED` or `READ_ONLY`, give the user that link and stop.
+Duchamp's server returns observed ads, advertiser breakdowns, comparisons, and a saved library. Signed-in results include creative URLs on Duchamp's mirror. Inline images are low-resolution previews for you; when showing the user, link `duchamp_url`. It does not reproduce ads. Duchamp provides research materials, not analysis: no tool calls a model. You read the materials and do the analysis. Saved items, boards, and watched advertiser pages are stored for the signed-in user. The saved-library tools need a separate per-app opt-in on https://duchamp.app/saved/connect (read, or read/write); signing in to the MCP server alone does not grant them. If a call returns `ACCESS_REQUIRED` or `READ_ONLY`, give the user that link and stop.
 
 Do not invent numbers, reviews, prices, or dates. Impression counts and revenue are not in the data. Ad copy (title and body excerpt) is included because every MCP call is signed in. When you mention an ad, link its `duchamp_url` or the ad-library URL so the user can see the original there.
 
-These tools are not counted toward the daily limit.
+The ads research tools are not on a daily fetch meter.
 
 Order: `search_ads`, then `get_ad` for one ad, or `get_brand_anatomy`, then `save_to_library` or `watch_brand`.
 
@@ -19,7 +19,7 @@ Order: `search_ads`, then `get_ad` for one ad, or `get_brand_anatomy`, then `sav
 
 ## 1. Long-running ads
 
-Call `search_ads` with `sort: "survival"` (the default). Read days running, survival, rank, variants, the signed-in copy, and `media` (creative URLs on Duchamp's mirror). To open one ad, call `get_ad` with its numeric `ad_id`. It returns the observation history, a Duchamp label summary when one exists, up to three other long-running ads from the same advertiser, and that ad's creative URLs. Inline images are low-resolution previews. When you show the user, link `duchamp_url`. Save the ones the user wants with `save_to_library`.
+Call `search_ads` with `sort: "survival"` (the default). By default it returns only ads that are working (active and running 90+ days, or in today's top 10 impression rank); pass `all: true` for every observed ad. Read days running, survival, rank, variants, the signed-in copy, and `media` (creative URLs on Duchamp's mirror). To open one ad, call `get_ad` with its numeric `ad_id`. It returns the observation history, the full body copy, the landing URL, other variants, timestamped keyframe URLs (up to 16), the timestamped speech transcript, a Duchamp label summary when one exists, up to three other long-running ads from the same advertiser, and that ad's creative URLs. Read the keyframes and the transcript yourself to name the hook, the offer, and where the CTA lands. Transcripts are raw speech-to-text and can mishear brand names; say so when it matters. Inline images are low-resolution previews. When you show the user, link `duchamp_url`. Save the ones the user wants with `save_to_library`.
 
 Paste:
 

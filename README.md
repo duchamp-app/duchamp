@@ -1,28 +1,27 @@
-# Duchamp — curated design references for coding agents
+# Duchamp — ad research for coding agents
 
-**Duchamp** gives Claude Code, Codex and Cursor a reviewed library of landing pages, hero sections, image prompts, motion-video recipes, logo and pitch-deck recipes, fonts and motion backgrounds, through one remote MCP server: `https://duchamp.app/api/mcp`.
+**Duchamp** is an ad-research tool for Claude Code, Codex, and Cursor. It finds the ads that are working for curated advertisers (running 90+ days, or in today's top 10 impression rank), and you save, compare, and pull the research materials into your agent, on the web or over one remote MCP server: `https://duchamp.app/api/mcp`.
 
-Your agent searches the library, inspects the real example (frames, video, design rules), fetches the recipe and renders the asset with code on your own machine. Duchamp never calls a model. Product facts passed to `compose_transfer_brief` are not stored. Saved items, boards, and watched advertiser pages are stored for the signed-in user. The saved-library tools need a separate per-app opt-in on [duchamp.app/saved/connect](https://duchamp.app/saved/connect).
+Call `search_ads` first, then `get_ad` or `get_brand_anatomy`. Creative files, ad copy, keyframes, and transcripts need the signed-in account. Lists and counts on the site are public. A reference prompt from `compose_transfer_brief` is a reference. It does not promise the same look or the same outcome. The original ad stays a link (`duchamp_url`). Duchamp provides materials, not analysis: `get_ad` returns timestamped keyframes, the speech transcript, full body copy, the landing URL, and observed numbers, and your agent does the analysis. Product facts passed to `compose_transfer_brief` are not stored. Saved items, boards, and watched advertiser pages are stored for the signed-in user. Those tools need a separate per-app opt-in on [duchamp.app/saved/connect](https://duchamp.app/saved/connect).
+
+20 tools are registered: 14 ad-research tools, 2 label tools, and 4 marketing workspace tools. The table below is that set.
 
 - Website: [duchamp.app](https://duchamp.app) · English overview: [duchamp.app/en](https://duchamp.app/en)
 - Connect page: [duchamp.app/mcp](https://duchamp.app/mcp)
 - MCP endpoint: `https://duchamp.app/api/mcp` (Streamable HTTP, OAuth 2.1 with a free Duchamp account, no API key)
 - For AI readers: [llms.txt](https://duchamp.app/llms.txt) · [llms-full.txt](https://duchamp.app/llms-full.txt)
 
-<a href="https://duchamp.app/ui/pages/saas-understand-clarity"><img src="https://duchamp.app/ui/saas-understand-clarity/hero-poster-desktop.webp" alt="Duchamp UI page: a SaaS landing page hero rebuilt from the recipe" width="100%"></a>
-
 ## What you get
 
 | Area | What it is | Browse |
 |---|---|---|
-| **UI pages & heroes** | 9 finished landing pages and 9 hero sections for a fictional brand, each screen-recorded and shipped with a React + Vite + Tailwind v4 recipe your agent rebuilds from. The recipe starts with STEP 0 questions about your product. | [duchamp.app/ui](https://duchamp.app/ui) · [pages](https://duchamp.app/ui/pages) · [heroes](https://duchamp.app/ui/sections/hero) |
-| **Image prompts** | Single images (posters, info cards, carousel covers) as ChatGPT image prompts that draw Korean text correctly, plus five-slide carousel styles. Most also have a coding-agent recipe. | [images](https://duchamp.app/readymade/images) · [carousels](https://duchamp.app/readymade/carousels) |
-| **Motion video recipes** | 9:16 motion-graphics videos rendered as silent MP4 with React + HyperFrames. Code, not AI video. | [duchamp.app/readymade/motion](https://duchamp.app/readymade/motion) |
-| **Logo & pitch-deck recipes** | A vector logo kit (mark, wordmark, lockups, favicons, OG image) written with Node code, and an investor deck rendered from your repo's facts to PNG slides and PDF. | [logos](https://duchamp.app/readymade/logos) · [decks](https://duchamp.app/readymade/decks) |
-| **Fonts & motion backgrounds** | 53 free commercial-use Korean and Latin fonts with install code (web, npm, next/font), and text-free looping background videos (MP4, 4:5 and 9:16). | [fonts](https://duchamp.app/fonts) · [backgrounds](https://duchamp.app/readymade/backgrounds) |
-| **Ads research & saved library** | Observed ads on tracked advertiser pages, a breakdown, a side-by-side compare, a saved library, and an optional reference prompt. Signed-in results include creative URLs on Duchamp's mirror. Duchamp does not reproduce ads. | [Explore](https://duchamp.app/ads) · [Brands](https://duchamp.app/ads/brands) · [Compare](https://duchamp.app/ads/compare) · [Saved](https://duchamp.app/saved) · [Brief](https://duchamp.app/transfer) |
+| **Explore** | Ads that are working for curated advertisers, collected daily: running 90+ days or in today's top 10 impression rank (`all` shows every observed ad). Lists and counts are public. | [Explore](https://duchamp.app/ads) |
+| **Brands** | One advertiser's breakdown. Watch a page, including a competitor. A page you add yourself is limited to 10. | [Brands](https://duchamp.app/ads/brands) |
+| **Compare** | Up to four advertiser pages, from public records. No impression counts and no revenue. | [Compare](https://duchamp.app/ads/compare) |
+| **Breakdowns** | Ads broken into labels. A research reference. The label does not include the creative file. | [Breakdowns](https://duchamp.app/readymade/references) |
+| **Saved and Brief** | Saved ads, labels, and links, plus a reference prompt. The prompt does not promise the same ad. | [Saved](https://duchamp.app/saved) · [Brief](https://duchamp.app/transfer) |
 
-Every template has the same four blanks: `[브랜드명]` (brand name), `[브랜드 색]` (brand color), `[주제]` (topic) and `[넣을 글자]` (the text to put in). The agent fills them only with what you confirmed. Brand facts, numbers, dates, prices and reviews are never invented.
+Do not invent numbers, dates, prices, or reviews. Transcripts are raw speech-to-text and can mishear names. A person should check what the agent concludes.
 
 ## Connect in one line
 
@@ -79,10 +78,9 @@ codex plugin add duchamp@duchamp
 
 Then sign in once: Claude Code `/mcp` → `duchamp` → Authenticate; Codex `codex mcp login duchamp`.
 
-- `make`: build one or more assets with the build → render → judge → retry loop.
-- `launch-kit`: read your product repo, confirm the facts, then make the full launch set.
-- `ads-research`: find long-running ads, open one ad, break down an advertiser, compare your page, and keep a saved library.
-- `visual-judge` agent (Claude Code): the fresh-context reviewer used by `make`.
+- `ads-research`: find working ads, open one ad with its materials, break down an advertiser, compare your page, and keep a saved library. This is the skill to use.
+- `make` and `launch-kit`: paused. They call tools that are not registered. Do not call those tools. Use `ads-research`.
+- `visual-judge` agent (Claude Code): a fresh-context reviewer. The `make` skill that used to call it is paused.
 
 Everything runs on your own Claude Code or Codex subscription.
 
@@ -90,17 +88,10 @@ Everything runs on your own Claude Code or Codex subscription.
 
 | Tool | What it does | Counts toward daily limit |
 |---|---|---|
-| `search_image_templates` | Find single images, carousel styles, motion videos, logo kits and pitch decks. Filter by use, ratio or occasion. | No |
-| `get_reference` | Inspect one item: example frames, video URLs, authored visual and motion rules, palettes. | No |
-| `get_template` | Full prompt or coding-agent recipe for an image, carousel, video, logo or deck. | Yes |
-| `search_ui` | Find landing pages and hero sections by service type, intent and style. | No |
-| `get_ui` | Section order, conditional variants, STEP 0 questions and the full React + Tailwind recipe. | Yes |
-| `search_assets` | Find free fonts (by category and script) and motion backgrounds. | No |
-| `get_asset` | Font install code (web, npm, next/font, agent prompt) with license, or background MP4 download URLs. | Yes |
 | `search_reference_labels` | Search Duchamp's written breakdowns of market-tested ads (advertiser, days running, format, hook, evidence, why it was picked, ad-library link). No creative files. | No |
 | `get_reference_label` | One label in full: beats, layers, and transfer rules (what to swap, what needs your own facts, what never to invent). A research reference, not a reproduction. | No |
-| `search_ads` | Search observed ads. Days running, survival, rank, signed-in ad copy, and creative URLs on Duchamp's mirror. Inline images are low-resolution previews. | No |
-| `get_ad` | One observed ad: facts, history, a label summary when one exists, up to three other long-running ads from the same advertiser, and creative URLs on Duchamp's mirror. | No |
+| `search_ads` | Search observed ads. By default only ads that are working (active and running 90+ days or in the top 10 impression rank); `all: true` shows every observed ad. Days running, survival, rank, signed-in ad copy, and creative URLs on Duchamp's mirror. Inline images are low-resolution previews. | No |
+| `get_ad` | One observed ad with research materials: facts, history, full body copy, landing URL, variants, timestamped keyframe URLs (up to 16), the timestamped speech transcript, a label summary when one exists, up to three other long-running ads from the same advertiser, and creative URLs on Duchamp's mirror. | No |
 | `get_brand_anatomy` | One advertiser page: mix, long-running ads, rankings, hooks, landings, CTAs. | No |
 | `compare_brands` | Up to four advertiser pages side by side. No impression counts and no revenue. | No |
 | `list_watched_brands` | Advertiser pages this user watches, including the one marked as their own. | No |
@@ -113,35 +104,36 @@ Everything runs on your own Claude Code or Codex subscription.
 | `create_board` | Create a board. | No |
 | `add_to_board` | Add saved item ids to a board. | No |
 | `compose_transfer_brief` | A reference prompt from ads, labels, a page, or a board, plus facts from the user's own context. A reference only, not a guaranteed reproduction. Those facts are not stored and not logged. | No |
+| `list_marketing_projects` | List the user's marketing projects. Needs a separate opt-in on the marketing connect page. | No |
+| `get_marketing_project` | Read one marketing project. | No |
+| `create_marketing_project` | Create a marketing project. | No |
+| `update_marketing_project` | Update a marketing project. Read the latest version first. | No |
 
-Fetching a template, recipe or asset counts toward the same daily free limit as copying on duchamp.app. Searches, `get_reference`, `get_reference_label` and the ads research tools are not counted, so search and inspect before fetching. Template results carry `tier`: `recipe` renders the same result from the same input in code; `guide` is an image-prompt style guide whose output varies.
+The ad research tools are not on a daily fetch meter. 20 tools are in the table.
 
 ## Example prompts
 
-- "Build a landing page for my AI note-taking app using a Duchamp hero. Search Duchamp for SaaS hero sections, show me three, then fetch the recipe for the one you recommend and ask me its STEP 0 questions before you write code."
-- "Render a 9:16 launch video for our opening on the date I give you. Find an open-countdown motion template on Duchamp, check the example video, fetch the recipe and render the MP4."
-- "Give me a free Korean font with install code for Next.js. Search Duchamp fonts for a geometric sans with Hangul, then fetch the install snippet and license."
-- "Make a weekend discount poster. Find a Duchamp poster template for a discount, get the full prompt and text limits, then fill the blanks with my brand color and the exact text I confirm."
-- "Write a vector logo kit for a brand called Mono, primary #111111 on #F5F5F0. Fetch the Duchamp logo recipe and run it; I want favicons and an OG image too."
+- "Find long-running ads in my niche with search_ads. List the advertiser, days running, impression rank, and duchamp_url. Do not invent impression counts or revenue."
+- "Open this ad with get_ad, then get_brand_anatomy for the advertiser. Read the keyframes and transcript, then tell me the hook and the offer. Link duchamp_url."
+- "Watch my page with watch_brand and is_mine true, watch a competitor, then compare_brands. At most four pages."
 
 ## How it works
 
-1. **Search** one item at a time (`search_*`). Results carry inline previews and a `duchamp_url`.
-2. **Inspect** the reference (`get_reference`): real frames, video URLs, the authored design rules.
-3. **Fetch** the template (`get_template`, `get_ui`, `get_asset`): a prompt, or a paste-ready recipe.
-4. **Render**: your agent runs the recipe with code (React + HyperFrames for video, React + Tailwind for UI, Node for logos) on your machine.
-5. **Judge**: with the plugin, a fresh `visual-judge` opens the rendered pixels, scores them against fixed criteria, and the agent retries until it passes.
+1. **Search** with `search_ads`.
+2. **Open** one ad with `get_ad`, or one advertiser with `get_brand_anatomy`.
+3. **Compare** with `compare_brands` (at most four page ids) or save with the library tools after the saved-library opt-in.
+4. **Hand off** with `compose_transfer_brief` when the user asks. It is a reference prompt. It does not promise the same ad.
 
 ## Limits & account
 
 - Sign in with a free Duchamp account on the first connection (OAuth in your browser). No API key.
-- `get_template`, `get_ui` and `get_asset` share one daily free limit with copying on duchamp.app. If a fetch returns the daily-limit message, the agent relays it and stops.
-- A Creator plan ($9/month or $79/year) is planned for higher limits. Until billing opens, everything is free. See [duchamp.app/en/pricing](https://duchamp.app/en/pricing).
+- The ad-research tools are not counted toward a daily limit.
+- A Creator plan ($9/month or $79/year) is listed on the pricing page. Payments are not open yet. See [duchamp.app/en/pricing](https://duchamp.app/en/pricing).
 - Items appear on their release date. Ids not listed on the site are not available.
 
 ## Privacy
 
-Duchamp stores your account, usage records, saved items, boards, and watched advertiser pages. Product facts passed to `compose_transfer_brief` are not stored. Your rendered files stay on your machine. Duchamp never calls a model on your behalf. Signed-in ad research can include creative URLs on Duchamp's mirror. Reference labels do not include creative files.
+Duchamp stores your account, usage records, saved items, boards, and watched advertiser pages. Product facts passed to `compose_transfer_brief` are not stored. Your rendered files stay on your machine. Duchamp does not call a model on your requests. Speech transcripts are made once per video when it is collected. Duchamp does not reproduce the ad. Signed-in ad research can include creative URLs on Duchamp's mirror. Reference labels do not include creative files.
 
 What Duchamp does not do:
 
@@ -149,7 +141,7 @@ What Duchamp does not do:
 - No voice cloning, no audio or music generation, no adult content, no AI companion or relationship features.
 - Templates: no display or re-hosting of other people's posts or accounts. Templates carry no original wording, images, or account names.
 - Ads research: signed-in callers get creative URLs on Duchamp's mirror. Inline images in tool results are low-resolution previews for the agent. When showing the user, link `duchamp_url`. Reference labels still do not include creative files. Duchamp does not reproduce the ad.
-- No scheduling, publishing, channel connection, performance analytics, or server-side content generation. No engagement automation, and no access to any account the user does not own.
+- No scheduling, publishing, channel connection, or performance analytics. No server-side content generation. No engagement automation, and no access to any account the user does not own.
 - No aggregation or resale of personal data, and no performance guarantees.
 
 Rights in the original posts stay with their rights holders. To ask for a template to be taken down, write to sean@notique.co with the original URL.

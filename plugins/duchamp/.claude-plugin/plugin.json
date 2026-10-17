@@ -1,7 +1,7 @@
 {
   "name": "duchamp",
-  "version": "0.7.0",
-  "description": "Market-tested ad research + visual templates and recipes for coding agents.",
+  "version": "0.8.0",
+  "description": "Market-tested ad research for coding agents: working ads, keyframes and transcripts over MCP.",
   "author": {
     "name": "Duchamp",
     "url": "https://duchamp.app"
@@ -9,12 +9,12 @@
   "homepage": "https://duchamp.app",
   "license": "MIT",
   "keywords": [
-    "design",
-    "landing-page",
+    "ads",
+    "ad-research",
+    "meta-ad-library",
+    "competitor-research",
     "marketing",
-    "carousel",
-    "video",
-    "templates"
+    "mcp"
   ],
   "mcpServers": "./.mcp.json",
   "repository": "https://github.com/duchamp-app/duchamp"
