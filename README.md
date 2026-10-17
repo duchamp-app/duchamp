@@ -20,7 +20,7 @@ Your agent searches the library, inspects the real example (frames, video, desig
 | **Motion video recipes** | 9:16 motion-graphics videos rendered as silent MP4 with React + HyperFrames. Code, not AI video. | [duchamp.app/readymade/motion](https://duchamp.app/readymade/motion) |
 | **Logo & pitch-deck recipes** | A vector logo kit (mark, wordmark, lockups, favicons, OG image) written with Node code, and an investor deck rendered from your repo's facts to PNG slides and PDF. | [logos](https://duchamp.app/readymade/logos) · [decks](https://duchamp.app/readymade/decks) |
 | **Fonts & motion backgrounds** | 53 free commercial-use Korean and Latin fonts with install code (web, npm, next/font), and text-free looping background videos (MP4, 4:5 and 9:16). | [fonts](https://duchamp.app/fonts) · [backgrounds](https://duchamp.app/readymade/backgrounds) |
-| **Ads, saved library, transfer** | Observed ads on tracked advertiser pages, a breakdown, a side-by-side compare, a saved library, and a transfer brief. Links only — no original creative files. | [Explore](https://duchamp.app/ads) · [Brands](https://duchamp.app/ads/brands) · [Compare](https://duchamp.app/ads/compare) · [Saved](https://duchamp.app/saved) · [Transfer](https://duchamp.app/transfer) |
+| **Ads research & saved library** | Observed ads on tracked advertiser pages, a breakdown, a side-by-side compare, a saved library, and an optional reference prompt. Links and observed numbers only — no original creative files, and Duchamp does not reproduce ads. | [Explore](https://duchamp.app/ads) · [Brands](https://duchamp.app/ads/brands) · [Compare](https://duchamp.app/ads/compare) · [Saved](https://duchamp.app/saved) · [Brief](https://duchamp.app/transfer) |
 
 Every template has the same four blanks: `[브랜드명]` (brand name), `[브랜드 색]` (brand color), `[주제]` (topic) and `[넣을 글자]` (the text to put in). The agent fills them only with what you confirmed. Brand facts, numbers, dates, prices and reviews are never invented.
 
@@ -81,7 +81,7 @@ Then sign in once: Claude Code `/mcp` → `duchamp` → Authenticate; Codex `cod
 
 - `make`: build one or more assets with the build → render → judge → retry loop.
 - `launch-kit`: read your product repo, confirm the facts, then make the full launch set.
-- `ads-research`: find long-running ads, break down an advertiser, compare your page, and turn a board into a transfer brief.
+- `ads-research`: find long-running ads, open one ad, break down an advertiser, compare your page, and keep a saved library.
 - `visual-judge` agent (Claude Code): the fresh-context reviewer used by `make`.
 
 Everything runs on your own Claude Code or Codex subscription.
@@ -98,12 +98,10 @@ Everything runs on your own Claude Code or Codex subscription.
 | `search_assets` | Find free fonts (by category and script) and motion backgrounds. | No |
 | `get_asset` | Font install code (web, npm, next/font, agent prompt) with license, or background MP4 download URLs. | Yes |
 | `search_reference_labels` | Search Duchamp's written breakdowns of market-tested ads (advertiser, days running, format, hook, evidence, why it was picked, ad-library link). No creative files. | No |
-| `get_reference_label` | One label in full: beats, layers, what code reproduces, what you supply, transfer rules. | No |
-| `deconstruct_reference` | The label schema, vocabulary and fill order so the agent can break down a reference it watches itself. The server never fetches the URL or calls a model. | No |
-| `match_recipe` | Match a filled label to up to three recipes with a fill plan for the four blanks and the facts that must not be invented. Deterministic. | No |
+| `get_reference_label` | One label in full: beats, layers, and transfer rules (what to swap, what needs your own facts, what never to invent). A research reference, not a reproduction. | No |
 | `search_ads` | Search observed ads. Days running, survival, rank, and signed-in ad copy. No original creative files. | No |
 | `get_ad` | One observed ad: facts, history, a label summary when one exists, and up to three other long-running ads from the same advertiser. No original creative files. | No |
-| `get_brand_anatomy` | One advertiser page: mix, long-running ads, rankings, hooks, landings, recipe hints. | No |
+| `get_brand_anatomy` | One advertiser page: mix, long-running ads, rankings, hooks, landings, CTAs. | No |
 | `compare_brands` | Up to four advertiser pages side by side. No impression counts and no revenue. | No |
 | `list_watched_brands` | Advertiser pages this user watches, including the one marked as their own. | No |
 | `list_saved` | This user's saved ads, labels, and https URLs. | No |
@@ -114,9 +112,9 @@ Everything runs on your own Claude Code or Codex subscription.
 | `save_to_library` | Save an ad, a reference label, or an https URL. Notes and tags are not written to the call log. | No |
 | `create_board` | Create a board. | No |
 | `add_to_board` | Add saved item ids to a board. | No |
-| `compose_transfer_brief` | A transfer brief from ads, labels, a page, or a board, plus facts from the user's own context. Those facts are not stored and not logged. Next: `get_template`. | No |
+| `compose_transfer_brief` | A reference prompt from ads, labels, a page, or a board, plus facts from the user's own context. A reference only, not a guaranteed reproduction. Those facts are not stored and not logged. | No |
 
-Fetching a template, recipe or asset counts toward the same daily free limit as copying on duchamp.app. Searches, `get_reference`, `get_reference_label`, `deconstruct_reference`, `match_recipe` and the ads research tools are not counted, so search and inspect before fetching. Template results carry `tier`: `recipe` renders the same result from the same input in code; `guide` is an image-prompt style guide whose output varies.
+Fetching a template, recipe or asset counts toward the same daily free limit as copying on duchamp.app. Searches, `get_reference`, `get_reference_label` and the ads research tools are not counted, so search and inspect before fetching. Template results carry `tier`: `recipe` renders the same result from the same input in code; `guide` is an image-prompt style guide whose output varies.
 
 ## Example prompts
 
