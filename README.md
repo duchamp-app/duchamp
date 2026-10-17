@@ -128,7 +128,7 @@ The ad research tools are not on a daily fetch meter. 20 tools are in the table.
 
 - Sign in with a free Duchamp account on the first connection (OAuth in your browser). No API key.
 - The ad-research tools are not counted toward a daily limit.
-- A Creator plan ($9/month or $79/year) is listed on the pricing page. Payments are not open yet. See [duchamp.app/en/pricing](https://duchamp.app/en/pricing).
+- Pro is listed at $19/month or $190/year (10 competitor pages collected daily, unlimited MCP). Once payments open, Free keeps search unlimited and opens 20 ads a day over MCP. Payments are not open yet, so everything is free with no limits for now. See [duchamp.app/en/pricing](https://duchamp.app/en/pricing).
 - Items appear on their release date. Ids not listed on the site are not available.
 
 ## Privacy
