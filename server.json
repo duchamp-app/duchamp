@@ -3,7 +3,7 @@
   "name": "io.github.duchamp-app/duchamp",
   "title": "Duchamp",
   "description": "Market-tested ad references + code-rendered recipes for coding agents.",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "websiteUrl": "https://duchamp.app",
   "repository": {
     "url": "https://github.com/duchamp-app/duchamp",

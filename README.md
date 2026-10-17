@@ -102,6 +102,7 @@ Everything runs on your own Claude Code or Codex subscription.
 | `deconstruct_reference` | The label schema, vocabulary and fill order so the agent can break down a reference it watches itself. The server never fetches the URL or calls a model. | No |
 | `match_recipe` | Match a filled label to up to three recipes with a fill plan for the four blanks and the facts that must not be invented. Deterministic. | No |
 | `search_ads` | Search observed ads. Days running, survival, rank, and signed-in ad copy. No original creative files. | No |
+| `get_ad` | One observed ad: facts, history, a label summary when one exists, and up to three other long-running ads from the same advertiser. No original creative files. | No |
 | `get_brand_anatomy` | One advertiser page: mix, long-running ads, rankings, hooks, landings, recipe hints. | No |
 | `compare_brands` | Up to four advertiser pages side by side. No impression counts and no revenue. | No |
 | `list_watched_brands` | Advertiser pages this user watches, including the one marked as their own. | No |

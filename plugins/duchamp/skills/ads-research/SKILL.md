@@ -11,13 +11,13 @@ Do not invent numbers, reviews, prices, or dates. Impression counts and revenue 
 
 These tools are not counted toward the daily limit. `get_template` is. After a brief, fetch the recipe and render it.
 
-Order: `search_ads` or `get_brand_anatomy`, then `save_to_library` or `watch_brand`, then `compose_transfer_brief`, then `get_template(recipe_id)`.
+Order: `search_ads`, then `get_ad` for one ad, or `get_brand_anatomy`, then `save_to_library` or `watch_brand`, then `compose_transfer_brief`, then `get_template(recipe_id)`.
 
 `compare_brands` takes at most 4 page ids. `watch_brand` wants an advertiser page id or an advertiser-page URL (`view_all_page_id`), not one ad's id.
 
 ## 1. Long-running ads
 
-Call `search_ads` with `sort: "survival"` (the default). Read days running, survival, variants, and the signed-in copy. Save the ones the user wants with `save_to_library`.
+Call `search_ads` with `sort: "survival"` (the default). Read days running, survival, variants, and the signed-in copy. To open one ad, call `get_ad` with its numeric `ad_id`. It returns the observation history, a Duchamp label summary when one exists, and up to three other long-running ads from the same advertiser. Original creative files are not included. Save the ones the user wants with `save_to_library`.
 
 Paste:
 
