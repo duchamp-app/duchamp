@@ -20,7 +20,7 @@ Your agent searches the library, inspects the real example (frames, video, desig
 | **Motion video recipes** | 9:16 motion-graphics videos rendered as silent MP4 with React + HyperFrames. Code, not AI video. | [duchamp.app/readymade/motion](https://duchamp.app/readymade/motion) |
 | **Logo & pitch-deck recipes** | A vector logo kit (mark, wordmark, lockups, favicons, OG image) written with Node code, and an investor deck rendered from your repo's facts to PNG slides and PDF. | [logos](https://duchamp.app/readymade/logos) · [decks](https://duchamp.app/readymade/decks) |
 | **Fonts & motion backgrounds** | 53 free commercial-use Korean and Latin fonts with install code (web, npm, next/font), and text-free looping background videos (MP4, 4:5 and 9:16). | [fonts](https://duchamp.app/fonts) · [backgrounds](https://duchamp.app/readymade/backgrounds) |
-| **Ads research & saved library** | Observed ads on tracked advertiser pages, a breakdown, a side-by-side compare, a saved library, and an optional reference prompt. Links and observed numbers only — no original creative files, and Duchamp does not reproduce ads. | [Explore](https://duchamp.app/ads) · [Brands](https://duchamp.app/ads/brands) · [Compare](https://duchamp.app/ads/compare) · [Saved](https://duchamp.app/saved) · [Brief](https://duchamp.app/transfer) |
+| **Ads research & saved library** | Observed ads on tracked advertiser pages, a breakdown, a side-by-side compare, a saved library, and an optional reference prompt. Signed-in results include creative URLs on Duchamp's mirror. Duchamp does not reproduce ads. | [Explore](https://duchamp.app/ads) · [Brands](https://duchamp.app/ads/brands) · [Compare](https://duchamp.app/ads/compare) · [Saved](https://duchamp.app/saved) · [Brief](https://duchamp.app/transfer) |
 
 Every template has the same four blanks: `[브랜드명]` (brand name), `[브랜드 색]` (brand color), `[주제]` (topic) and `[넣을 글자]` (the text to put in). The agent fills them only with what you confirmed. Brand facts, numbers, dates, prices and reviews are never invented.
 
@@ -99,14 +99,14 @@ Everything runs on your own Claude Code or Codex subscription.
 | `get_asset` | Font install code (web, npm, next/font, agent prompt) with license, or background MP4 download URLs. | Yes |
 | `search_reference_labels` | Search Duchamp's written breakdowns of market-tested ads (advertiser, days running, format, hook, evidence, why it was picked, ad-library link). No creative files. | No |
 | `get_reference_label` | One label in full: beats, layers, and transfer rules (what to swap, what needs your own facts, what never to invent). A research reference, not a reproduction. | No |
-| `search_ads` | Search observed ads. Days running, survival, rank, and signed-in ad copy. No original creative files. | No |
-| `get_ad` | One observed ad: facts, history, a label summary when one exists, and up to three other long-running ads from the same advertiser. No original creative files. | No |
+| `search_ads` | Search observed ads. Days running, survival, rank, signed-in ad copy, and creative URLs on Duchamp's mirror. Inline images are low-resolution previews. | No |
+| `get_ad` | One observed ad: facts, history, a label summary when one exists, up to three other long-running ads from the same advertiser, and creative URLs on Duchamp's mirror. | No |
 | `get_brand_anatomy` | One advertiser page: mix, long-running ads, rankings, hooks, landings, CTAs. | No |
 | `compare_brands` | Up to four advertiser pages side by side. No impression counts and no revenue. | No |
 | `list_watched_brands` | Advertiser pages this user watches, including the one marked as their own. | No |
 | `list_saved` | This user's saved ads, labels, and https URLs. | No |
 | `list_boards` | This user's boards. | No |
-| `get_board` | One board. Ad items include observation numbers and signed-in copy. Label items include a summary. | No |
+| `get_board` | One board. Ad items include observation numbers, signed-in copy, and creative URLs on Duchamp's mirror. Label items include a summary and no creative files. | No |
 | `watch_brand` | Watch an advertiser page (page id or advertiser-page URL). `is_mine` marks the user's own page. | No |
 | `unwatch_brand` | Stop watching an advertiser page. | No |
 | `save_to_library` | Save an ad, a reference label, or an https URL. Notes and tags are not written to the call log. | No |
@@ -141,13 +141,14 @@ Fetching a template, recipe or asset counts toward the same daily free limit as 
 
 ## Privacy
 
-Duchamp stores your account, usage records, saved items, boards, and watched advertiser pages. Product facts passed to `compose_transfer_brief` are not stored. Your rendered files stay on your machine. Duchamp never calls a model on your behalf. Original ad creative files are not stored or re-hosted.
+Duchamp stores your account, usage records, saved items, boards, and watched advertiser pages. Product facts passed to `compose_transfer_brief` are not stored. Your rendered files stay on your machine. Duchamp never calls a model on your behalf. Signed-in ad research can include creative URLs on Duchamp's mirror. Reference labels do not include creative files.
 
 What Duchamp does not do:
 
 - No generation of human faces, human likenesses, face swaps, deepfakes, or synthetic voices. Duchamp does not create synthetic media of real people.
 - No voice cloning, no audio or music generation, no adult content, no AI companion or relationship features.
-- No display or re-hosting of other people's posts or accounts. Templates carry no original wording, images, or account names. Duchamp is not a downloader.
+- Templates: no display or re-hosting of other people's posts or accounts. Templates carry no original wording, images, or account names.
+- Ads research: signed-in callers get creative URLs on Duchamp's mirror. Inline images in tool results are low-resolution previews for the agent. When showing the user, link `duchamp_url`. Reference labels still do not include creative files. Duchamp does not reproduce the ad.
 - No scheduling, publishing, channel connection, performance analytics, or server-side content generation. No engagement automation, and no access to any account the user does not own.
 - No aggregation or resale of personal data, and no performance guarantees.
 

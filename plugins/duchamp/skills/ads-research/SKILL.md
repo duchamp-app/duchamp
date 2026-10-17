@@ -5,7 +5,7 @@ description: Research market-tested ads on Duchamp — find long-running ads, br
 
 # Duchamp ads research
 
-Duchamp's server returns observed ads, advertiser breakdowns, comparisons, and a saved library — a research list with links and observed numbers. It never returns original creative files (video or image), and it does not reproduce ads. It never calls a model. Saved items, boards, and watched advertiser pages are stored for the signed-in user. The saved-library tools need a separate per-app opt-in on https://duchamp.app/saved/connect (read, or read/write); signing in to the MCP server alone does not grant them. If a call returns `ACCESS_REQUIRED` or `READ_ONLY`, give the user that link and stop.
+Duchamp's server returns observed ads, advertiser breakdowns, comparisons, and a saved library. Signed-in results include creative URLs on Duchamp's mirror. Inline images are low-resolution previews for you; when showing the user, link `duchamp_url`. It does not reproduce ads. It never calls a model. Saved items, boards, and watched advertiser pages are stored for the signed-in user. The saved-library tools need a separate per-app opt-in on https://duchamp.app/saved/connect (read, or read/write); signing in to the MCP server alone does not grant them. If a call returns `ACCESS_REQUIRED` or `READ_ONLY`, give the user that link and stop.
 
 Do not invent numbers, reviews, prices, or dates. Impression counts and revenue are not in the data. Ad copy (title and body excerpt) is included because every MCP call is signed in. When you mention an ad, link its `duchamp_url` or the ad-library URL so the user can see the original there.
 
@@ -19,11 +19,11 @@ Order: `search_ads`, then `get_ad` for one ad, or `get_brand_anatomy`, then `sav
 
 ## 1. Long-running ads
 
-Call `search_ads` with `sort: "survival"` (the default). Read days running, survival, rank, variants, and the signed-in copy. To open one ad, call `get_ad` with its numeric `ad_id`. It returns the observation history, a Duchamp label summary when one exists, and up to three other long-running ads from the same advertiser. Original creative files are not included. Save the ones the user wants with `save_to_library`.
+Call `search_ads` with `sort: "survival"` (the default). Read days running, survival, rank, variants, the signed-in copy, and `media` (creative URLs on Duchamp's mirror). To open one ad, call `get_ad` with its numeric `ad_id`. It returns the observation history, a Duchamp label summary when one exists, up to three other long-running ads from the same advertiser, and that ad's creative URLs. Inline images are low-resolution previews. When you show the user, link `duchamp_url`. Save the ones the user wants with `save_to_library`.
 
 Paste:
 
-`Duchamp의 search_ads로 오래 버틴 광고를 찾아 목록으로 보여 줘. sort는 survival. 원본 영상은 없으니 링크로 확인하게 하고, 숫자·후기·가격은 지어내지 마.`
+`Duchamp의 search_ads로 오래 버틴 광고를 찾아 목록으로 보여 줘. sort는 survival. 소재는 Duchamp 미러 주소다. 사용자에게 보여 줄 때는 duchamp_url 을 링크로 걸고, 숫자·후기·가격은 지어내지 마.`
 
 ## 2. One advertiser
 
