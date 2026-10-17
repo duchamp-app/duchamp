@@ -95,8 +95,12 @@ Everything runs on your own Claude Code or Codex subscription.
 | `get_ui` | Section order, conditional variants, STEP 0 questions and the full React + Tailwind recipe. | Yes |
 | `search_assets` | Find free fonts (by category and script) and motion backgrounds. | No |
 | `get_asset` | Font install code (web, npm, next/font, agent prompt) with license, or background MP4 download URLs. | Yes |
+| `search_reference_labels` | Search Duchamp's written breakdowns of market-tested ads (advertiser, days running, format, hook, evidence, why it was picked, ad-library link). No creative files. | No |
+| `get_reference_label` | One label in full: beats, layers, what code reproduces, what you supply, transfer rules. | No |
+| `deconstruct_reference` | The label schema, vocabulary and fill order so the agent can break down a reference it watches itself. The server never fetches the URL or calls a model. | No |
+| `match_recipe` | Match a filled label to up to three recipes with a fill plan for the four blanks and the facts that must not be invented. Deterministic. | No |
 
-Fetching a template, recipe or asset counts toward the same daily free limit as copying on duchamp.app. Searches and `get_reference` are not counted, so search and inspect before fetching.
+Fetching a template, recipe or asset counts toward the same daily free limit as copying on duchamp.app. Searches, `get_reference`, `get_reference_label`, `deconstruct_reference` and `match_recipe` are not counted, so search and inspect before fetching. Template results carry `tier`: `recipe` renders the same result from the same input in code; `guide` is an image-prompt style guide whose output varies.
 
 ## Example prompts
 

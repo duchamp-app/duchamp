@@ -22,7 +22,7 @@ Do not ask about anything a template's own STEP 0 will ask; let the recipe ask i
 
 ## 1. Plan
 
-Split the request into assets (one asset = one rendered output). For each asset, find a template with the right tool. Inspect the preview images before you pick.
+Split the request into assets (one asset = one rendered output). For each asset, find a template with the right tool. Inspect the preview images before you pick. When the lettering or layout has to be exact, choose a template with `tier: recipe`.
 
 | Asset | Find | Fetch |
 |---|---|---|
