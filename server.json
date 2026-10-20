@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.duchamp-app/duchamp",
   "title": "Duchamp",
-  "description": "Market-tested ad research for coding agents: working ads, keyframes and transcripts over MCP.",
-  "version": "0.9.0",
+  "description": "Competitor ad research for coding agents: long-running ads, keyframes and transcripts over MCP.",
+  "version": "0.9.1",
   "websiteUrl": "https://duchamp.app",
   "repository": {
     "url": "https://github.com/duchamp-app/duchamp",

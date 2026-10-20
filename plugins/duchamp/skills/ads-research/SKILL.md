@@ -1,6 +1,6 @@
 ---
 name: ads-research
-description: Research market-tested ads on Duchamp — find long-running ads, break down an advertiser, compare pages, and keep a saved library and boards. Use for niche ads, one ad, an advertiser or saved ads.
+description: Research long-running ads on Duchamp — find long-running ads, break down an advertiser, compare pages, and keep a saved library and boards. Use for niche ads, one ad, an advertiser or saved ads.
 ---
 
 # Duchamp ads research
@@ -25,7 +25,7 @@ To start from a homepage or a URL, call `find_advertisers_by_domain`; a matching
 
 ## 1. Long-running ads
 
-Call `search_ads` with `sort: "survival"` (the default). By default it returns only ads that are working (active and running 90+ days, or in the top 10 of the Meta impression-sorted results); pass `all: true` for every observed ad. `rank` is a position in Meta's impression-sorted results, not an impression count — read it with `rank_observed_on`. `activity` is `active`, `ended`, or `unknown` (not seen on the last partial collection, not proof it ended). Before you claim a trend or a rank change, call `get_collection_status` for those pages: a page observed on few days or ranked on fewer than 2 days cannot support it. Read days running, survival, rank, variants, the signed-in copy, and `media` (creative URLs on Duchamp's mirror). To open one ad, call `get_ad` with its numeric `ad_id`. It returns the observation history, the full body copy, the landing URL, other variants, timestamped keyframe URLs (up to 16), the timestamped speech transcript, a Duchamp label summary when one exists, up to three other long-running ads from the same advertiser, and that ad's creative URLs. Read the keyframes and the transcript yourself to name the hook, the offer, and where the CTA lands. Transcripts are raw speech-to-text and can mishear brand names; say so when it matters. Inline images are low-resolution previews. When you show the user, link `duchamp_url`. Save the ones the user wants with `save_to_library`.
+Call `search_ads` with `sort: "survival"` (the default). By default it returns only active ads running 90+ days; pass `all: true` for every observed ad. `rank` is the ad's position in its own advertiser's Meta impression-sorted list on `rank_observed_on` — not an impression count, not performance, and not comparable across advertisers. `activity` is `active`, `ended`, or `unknown` (not seen on the last partial collection, not proof it ended). Before you claim a trend or a rank change, call `get_collection_status` for those pages: a page observed on few days or ranked on fewer than 2 days cannot support it. Read days running, survival, rank, variants, the signed-in copy, and `media` (creative URLs on Duchamp's mirror). To open one ad, call `get_ad` with its numeric `ad_id`. It returns the observation history, the full body copy, the landing URL, other variants, timestamped keyframe URLs (up to 16), the timestamped speech transcript, a Duchamp label summary when one exists, up to three other long-running ads from the same advertiser, and that ad's creative URLs. Read the keyframes and the transcript yourself to name the hook, the offer, and where the CTA lands. Transcripts are raw speech-to-text and can mishear brand names; say so when it matters. Inline images are low-resolution previews. When you show the user, link `duchamp_url`. Save the ones the user wants with `save_to_library`.
 
 Paste:
 
@@ -33,11 +33,11 @@ Paste:
 
 ## 2. One advertiser
 
-Call `get_brand_anatomy` for the page the user names. Show the long-running ads, rankings, media mix, hooks, landings, and CTAs.
+Call `get_brand_anatomy` for the page the user names. Show the long-running ads, media mix, hooks, landings, and CTAs. `rankings` are positions inside this advertiser's list only — do not present them as performance or compare them with other advertisers.
 
 Paste:
 
-`Duchamp의 get_brand_anatomy로 이 광고주를 해부해서 오래 돈 광고·노출 순위·매체 비율·CTA를 보여 줘.`
+`Duchamp의 get_brand_anatomy로 이 광고주를 해부해서 오래 돈 광고·매체 비율·CTA를 보여 줘.`
 
 ## 3. My page next to competitors
 

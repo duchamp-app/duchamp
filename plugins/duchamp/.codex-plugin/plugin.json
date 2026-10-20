@@ -1,7 +1,7 @@
 {
   "name": "duchamp",
-  "version": "0.9.0",
-  "description": "Market-tested ad research for coding agents: working ads, keyframes and transcripts over MCP.",
+  "version": "0.9.1",
+  "description": "Competitor ad research for coding agents: long-running ads, keyframes and transcripts over MCP.",
   "author": {
     "name": "Duchamp",
     "url": "https://duchamp.app"
@@ -20,8 +20,8 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Duchamp",
-    "shortDescription": "Research the ads that are working, from your agent",
-    "longDescription": "Duchamp gives Codex the ads that are working for curated advertisers (running 90+ days, or in today's top 10 impression rank) with research materials: timestamped keyframes, the speech transcript, full body copy, the landing URL and observed numbers. Your agent does the analysis on your own Codex subscription. Duchamp does not reproduce ads.",
+    "shortDescription": "Research long-running ads, from your agent",
+    "longDescription": "Duchamp gives Codex the ads curated advertisers have kept running for 90+ days with research materials: timestamped keyframes, the speech transcript, full body copy, the landing URL and observed numbers. Your agent does the analysis on your own Codex subscription. Duchamp does not reproduce ads.",
     "developerName": "Duchamp",
     "category": "Design",
     "capabilities": [

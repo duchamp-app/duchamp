@@ -1,6 +1,6 @@
 # Duchamp — ad research for coding agents
 
-**Duchamp** is an ad-research tool for Claude Code, Codex, and Cursor. It finds the ads that are working for curated advertisers (running 90+ days, or in today's top 10 impression rank), and you save, compare, and pull the research materials into your agent, on the web or over one remote MCP server: `https://duchamp.app/api/mcp`.
+**Duchamp** is an ad-research tool for Claude Code, Codex, and Cursor. It finds the ads curated advertisers have kept running for 90+ days, and you save, compare, and pull the research materials into your agent, on the web or over one remote MCP server: `https://duchamp.app/api/mcp`.
 
 Call `search_ads` first, then `get_ad` or `get_brand_anatomy`. Creative files, ad copy, keyframes, and transcripts need the signed-in account. Lists and counts on the site are public. A reference prompt from `compose_transfer_brief` is a reference. It does not promise the same look or the same outcome. The original ad stays a link (`duchamp_url`). `get_ad` returns timestamped keyframes, the speech transcript, full body copy, the landing URL, and observed numbers, plus a stored AI analysis when one exists (format, hook, 15 emotional drivers, persona, creative targeting, product category, first product appearance — filled by a nightly batch, Foreplay-style). Treat the analysis as a reference and check it against the materials; `search_ads` can filter by its fields. Product facts passed to `compose_transfer_brief` are not stored. Saved items, boards, and watched advertiser pages are stored for the signed-in user. Those tools need a separate per-app opt-in on [duchamp.app/saved/connect](https://duchamp.app/saved/connect).
 
@@ -19,7 +19,7 @@ Team boards (read only): `list_boards` with `scope: "team"` or `"all"` adds the 
 
 | Area | What it is | Browse |
 |---|---|---|
-| **Explore** | Ads that are working for curated advertisers, collected daily: running 90+ days or in today's top 10 impression rank (`all` shows every observed ad). Lists and counts are public. | [Explore](https://duchamp.app/ads) |
+| **Explore** | Active ads that curated advertisers have kept running for 90+ days, collected daily (`all` shows every observed ad). Lists and counts are public. | [Explore](https://duchamp.app/ads) |
 | **Brands** | One advertiser's breakdown. Watch a page, including a competitor. A page you add yourself is limited to 10. | [Brands](https://duchamp.app/ads/brands) |
 | **Compare** | Up to four advertiser pages, from public records. No impression counts and no revenue. | [Compare](https://duchamp.app/ads/compare) |
 | **Breakdowns** | Ads broken into labels. A research reference. The label does not include the creative file. | [Breakdowns](https://duchamp.app/readymade/references) |
@@ -101,13 +101,13 @@ Everything runs on your own Claude Code or Codex subscription.
 
 | Tool | What it does | Counts toward daily limit |
 |---|---|---|
-| `search_reference_labels` | Search Duchamp's written breakdowns of market-tested ads (advertiser, days running, format, hook, evidence, why it was picked, ad-library link). No creative files. | No |
+| `search_reference_labels` | Search Duchamp's written breakdowns of long-running ads (advertiser, days running, format, hook, evidence, why it was picked, ad-library link). No creative files. | No |
 | `get_reference_label` | One label in full: beats, layers, and transfer rules (what to swap, what needs your own facts, what never to invent). A research reference, not a reproduction. | No |
-| `search_ads` | Search observed ads. By default only ads that are working (active and running 90+ days or in the top 10 impression rank); `all: true` shows every observed ad. Days running, survival, rank, signed-in ad copy, and creative URLs on Duchamp's mirror. Inline images are low-resolution previews. | No |
+| `search_ads` | Search observed ads. By default only active ads running 90+ days; `all: true` shows every observed ad. Days running, survival, rank (position in that advertiser's own Meta impression-sorted list — not comparable across advertisers, not performance), signed-in ad copy, and creative URLs on Duchamp's mirror. Inline images are low-resolution previews. | No |
 | `get_ad` | One observed ad with research materials: facts, history, full body copy, landing URL, variants, timestamped keyframe URLs (up to 16), the timestamped speech transcript, a label summary when one exists, up to three other long-running ads from the same advertiser, and creative URLs on Duchamp's mirror. | No |
 | `get_ad_duplicates` | Every visible ad that uses the same image or video files as one ad: `same_creative` (all files identical, in order) and `same_asset` (shares at least one file, e.g. one carousel card). Byte-identical files only. `search_ads` with `group_by: "exact_creative"` collapses them into one item per creative. | No |
 | `search_ad_hooks` | Hook bank: opening lines grouped across ads with distinct ad counts, active counts and days running. `source: "speech"` is the first sentence spoken in the video (with the second it starts), `source: "copy"` the first line of the ad body. Filter by advertiser page, niche or text. | No |
-| `get_brand_anatomy` | One advertiser page: mix, long-running ads, rankings, hooks, landings, CTAs. | No |
+| `get_brand_anatomy` | One advertiser page: mix, long-running ads, positions in its own impression-sorted list, hooks, landings, CTAs. | No |
 | `compare_brands` | Up to four advertiser pages side by side. No impression counts and no revenue. | No |
 | `get_connection_status` | Call first in a new session. Confirms sign-in and whether this app may use the saved library and the marketing workspace, with the page to allow it and the next steps. | No |
 | `get_extension_status` | Whether this user's Duchamp Chrome extension is connected (count, version, last used), and how to connect it. Poll it while guiding an install. | No |
@@ -154,7 +154,7 @@ First prompts (replace the [ ] parts):
 
 More:
 
-- "Find long-running ads in my niche with search_ads. List the advertiser, days running, impression rank, and duchamp_url. Do not invent impression counts or revenue."
+- "Find long-running ads in my niche with search_ads. List the advertiser, days running, and duchamp_url. Do not invent impression counts or revenue."
 - "Open this ad with get_ad, then get_brand_anatomy for the advertiser. Read the keyframes and transcript, then tell me the hook and the offer. Link duchamp_url."
 - "Watch my page with watch_brand and is_mine true, watch a competitor, then compare_brands. At most four pages."
 

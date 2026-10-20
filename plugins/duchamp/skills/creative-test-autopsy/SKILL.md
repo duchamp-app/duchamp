@@ -16,7 +16,7 @@ Ask for the advertiser if the user did not give one: a page id, an ad library pa
 3. List the active ads once: `search_ads` with `page_id`, `status: "active"`, `all: true`, `sort: "recent"`, `limit: 24`, reading every `page` while `has_next_page` is true (stop at 5 pages = 120 ads and say the piles are a sample of the newest 120). Classify from this one list.
 4. Sort the active ads into two piles:
    - **Testing**: started in the last 14 days, or part of a same-day batch whose siblings are still young.
-   - **Scaling**: active 28+ days, or in the top 10 of the latest ranked day, or whose creative is reused across this advertiser's ads — the item's `duplicates` (this advertiser's ads using byte-identical files, itself included) is 2 or more. Same files with different copy or landing pages is a sign of scaling one creative. Use `get_ad_duplicates` only to show examples; its lists span advertisers and are capped, so do not count from them.
+   - **Scaling**: active 28+ days, or whose creative is reused across this advertiser's ads — the item's `duplicates` (this advertiser's ads using byte-identical files, itself included) is 2 or more. Same files with different copy or landing pages is a sign of scaling one creative. Use `get_ad_duplicates` only to show examples; its lists span advertisers and are capped, so do not count from them.
    Ads that fit neither: leave them out and say how many.
 5. Open 3–5 ads from each pile with `get_ad` (keyframes, transcript, body copy). Compare format, hook, offer, length and landing between the piles.
 
@@ -30,8 +30,8 @@ Ask for the advertiser if the user did not give one: a page id, an ad library pa
 ## Rules
 
 - `status: "active"` also returns ads with `activity: "unknown"` (not seen on the last partial collection). Say an ad is running only when `activity` is `"active"`; for `"unknown"`, give its `last_seen_on` instead.
-- These piles come from observation dates, ranks and reuse — not from spend or results. Say "keeps running" or "reused", not "winning" or "profitable".
-- Rank is a position in Meta's impression-sorted results with its date, not an impression count.
+- These piles come from observation dates and reuse — not from spend or results. Say "keeps running" or "reused", not "winning" or "profitable".
+- Rank is a position in this advertiser's Meta impression-sorted list with its date — not an impression count, not performance, and not comparable across advertisers. Do not use it to sort ads into piles.
 - Link every ad with `duchamp_url`.
 
 Activation prompt: `Use the creative-test-autopsy skill on [advertiser].`

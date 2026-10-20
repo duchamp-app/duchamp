@@ -1,6 +1,6 @@
 {
   "name": "duchamp",
-  "description": "Duchamp: market-tested ad research for coding agents.",
+  "description": "Duchamp: competitor ad research for coding agents.",
   "owner": {
     "name": "Duchamp",
     "url": "https://duchamp.app"
@@ -9,7 +9,7 @@
     {
       "name": "duchamp",
       "source": "./plugins/duchamp",
-      "description": "Find the ads that are working, read their keyframes and transcripts, break down advertisers and compare pages."
+      "description": "Find ads that have run 90+ days, read their keyframes and transcripts, break down advertisers and compare pages."
     }
   ]
 }
