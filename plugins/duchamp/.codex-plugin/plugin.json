@@ -1,6 +1,6 @@
 {
   "name": "duchamp",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "description": "Competitor ad research for coding agents: long-running ads, keyframes and transcripts over MCP.",
   "author": {
     "name": "Duchamp",
